@@ -86,8 +86,12 @@ const ProductDetails = () => {
 				<hr className="mt-4 mb-8" />
 				<div className="grid grid-cols-4 gap-8 ">
 					{relatedProduct?.map((p) => (
-						<div
-							className="flex flex-col items-center justify-between h-full border-2 shadow-lg shadow-gray-400  hover:scale-105 pb-2"
+						<div onClick={() =>
+							navigate(
+								`/product/${p._id}`
+							)
+						}
+							className="flex flex-col items-center justify-between h-full border-2 shadow-lg shadow-gray-400 hover:cursor-pointer hover:scale-105 pb-2"
 							key={p._id}
 						>
 							<img

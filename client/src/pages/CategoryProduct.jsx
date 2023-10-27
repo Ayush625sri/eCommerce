@@ -74,8 +74,12 @@ const CategoryProduct = () => {
 					<div className="flex  flex-col gap-4">
 						<div className="grid grid-cols-4 gap-5">
 							{products?.map((p) => (
-								<div
-									className="flex flex-col items-center justify-between h-full border-2  shadow-lg shadow-gray-400 hover:scale-105"
+								<div onClick={() =>
+									navigate(
+										`/product/${p._id}`
+									)
+								}
+									className="flex flex-col items-center justify-between h-full border-2  shadow-lg shadow-gray-400 hover:cursor-pointer hover:scale-105"
 									key={p._id}
 								>
 									<img

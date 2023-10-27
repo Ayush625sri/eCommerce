@@ -177,8 +177,12 @@ const Home = () => {
 						<h1 className="text-4xl">Products</h1>
 						<div className="grid grid-cols-4 gap-16">
 							{products?.map((p) => (
-								<div
-									className="flex flex-col items-center justify-between h-full border-2  shadow-lg shadow-gray-400 hover:scale-105"
+								<div onClick={() =>
+									navigate(
+										`/product/${p._id}`
+									)
+								}
+									className="flex flex-col items-center justify-between h-full border-2  shadow-lg shadow-gray-400 hover:scale-105 hover:cursor-pointer"
 									key={p._id}
 								>
 									<img
