@@ -7,7 +7,7 @@ export default function useCategory(){
     const getCategories = async()=>{
         try {
             const {data} = await axios.get(`/api/v1/category/get-categories`)
-            console.log(data.categories)
+           
             setCategories(data.categories)
         } catch (error) {
             console.log(error)
