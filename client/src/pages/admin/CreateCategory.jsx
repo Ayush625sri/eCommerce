@@ -93,11 +93,11 @@ const CreateCategory = () => {
 	};
 	return (
 		<Layout title={"Dashboard - Create Category"}>
-			<div className="flex mb-8">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 lg:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-6 mx-10 p-10 pt-4 h-fit  border-2 shadow-gray-400 shadow-xl ">
-					<div className="flex items-center justify-around">	
-						<h1 className="text-5xl bold">Manage Category</h1>
+				<div className="flex flex-col xl:w-full mt-6 p-2 md:mx-10 md:p-10 pt-4 h-fit  border-2 shadow-gray-400 shadow-xl ">
+					<div className="flex flex-col lg:flex-row items-center justify-around">	
+						<h1 className="text-4xl md:text-5xl bold">Manage Category</h1>
 						<div className="">
 							<CategoryForm
 								handleSubmit={handleSubmit}
@@ -109,42 +109,42 @@ const CreateCategory = () => {
 					</div>
 					<div className="mt-6 shadow-gray-400 shadow-lg 	">
 						<table className="text-2xl border-2  w-full ">
-							<thead className="  text-3xl">
+							<thead className=" text-xl md:text-3xl">
 								<tr className="border-2">
 									<th
-										className="border-2   px-16 py-2"
+										className="border-2  px-1 md:px-4 lg:px-16 py-2"
 										scope="col"
 									>
 										Name
 									</th>
 									<th
-										className="border-b-2  px-32 py-2"
+										className="border-b-2 px-1 md:px-8 lg:px-32 py-2"
 										scope="col"
 									>
 										Actions
 									</th>
 								</tr>
 							</thead>
-							<tbody className="bor px-4  text-center w-">
+							<tbody className="lg:px-4  text-center w-">
 								{categories?.map((c) => (
 									<tr
-										className="border-b-2  text-[1.6rem] "
+										className="border-b-2 text-xl md:text-[1.6rem] "
 										key={c._id}
 									>
-										<td className="border-r-2  px-6">
+										<td className="border-r-2  lg:px-6">
 											{c.name.charAt(0).toUpperCase() +
 												c.name.slice(1)}
 										</td>
-										<td className="flex items-center justify-around py-2 border-x-1 ">
+										<td className="flex flex-col lg:flex-row items-center justify-around py-1 lg:py-2 border-x-1 ">
 											<button
 												onClick={() => {
 													setVisible(true);
 													setUpdatedName(c.name);
 													setSelected(c);
 												}}
-												className="active:scale-95 shadow-gray-800 shadow-md border-4 border-green-700 px-6 py-2 my-2 rounded-xl bg-green-700 text-white hover:bg-white hover:text-green-700 flex items-center gap-4"
+												className="active:scale-95 shadow-gray-800 shadow-md border-4 border-green-700  px-2 md:px-5 py-2 my-2 rounded-xl bg-green-700 text-white hover:bg-white hover:text-green-700 flex items-center gap-4"
 											>
-												Edit <BsPencilSquare />{" "}
+												{(screen.width > 500) && "Edit" }<BsPencilSquare />{" "}
 											</button>
 											<button
 												onClick={() => {
@@ -152,9 +152,9 @@ const CreateCategory = () => {
 													setDeletedName(c.name);
 													setDelteSelected(c)
 												}}
-												className="active:scale-95 shadow-gray-800 shadow-md border-4 border-red-700  bg- px-4 py-2 my-2 rounded-xl bg-red-700  text-white hover:bg-white hover:text-red-700  flex items-center gap-4"
+												className="active:scale-95 shadow-gray-800 shadow-md border-4 border-red-700  bg- px-2 py-2 my-2 rounded-xl bg-red-700  text-white hover:bg-white hover:text-red-700  flex items-center gap-4"
 											>
-												Delete <BsFillTrash3Fill />{" "}
+												{(screen.width > 500) && "Delete" } <BsFillTrash3Fill />{" "}
 											</button>
 										</td>
 									</tr>

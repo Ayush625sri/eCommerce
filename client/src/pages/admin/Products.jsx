@@ -22,30 +22,30 @@ const Products = () => {
 	}, []);
 	return (
 		<Layout title="Dashboard - All Products">
-			<div className="flex pb-16 ">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 xl:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-6 mx-10 p-10 pt-6 h-fit  border-2 shadow-gray-400 shadow-xl ">
+				<div className="flex flex-col mt-6 xl:w-full justify-center items-center p-2 md:p-10 pt-6 border-2 shadow-gray-400 shadow-xl ">
 					<div className="flex justify-center ">
-						<h1 className="text-5xl bold">All Products</h1>
+						<h1 className="text-4xl lg:text-5xl bold mb-4">All Products</h1>
 					</div>
-					<div className="  grid grid-cols-3  w-full ">
+					<div className="  grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  ">
 						{products?.map((p) => (
 							<Link
 								to={`/dashboard/admin/product/${p._id}`}
-								className=" border-2  mx-7 my-6 shadow-md shadow-gray-400"
+								className=" mx-2 my-2"
 								key={p._id}
 							>
-								<div className="flex flex-col items-center justify-between h-full">
+								<div className="flex lg:flex-col items-center justify-between lg:w-80 border-2 shadow-md shadow-gray-400 h-full">
 									<img
 										src={`/api/v1/product/product-photo/${p._id}`}
 										alt={p.name}
-										className="w-full h-[75%] border shadow-sm shadow-gray-500"
+										className="w-32  md:w-full md:max-h-[20rem] lg:h-auto outline-none border-none lg:shadow-sm lg:shadow-gray-500"
 									/>
-									<div className="flex flex-col h-[25%] w-full px-3 pt-3">
-										<h3 className="font-bold text-xl ">
+									<div className="flex flex-col px-2 py-4 w-full">
+										<h3 className="font-bold text-xl xl:text-2xl">
 											{p.name}
 										</h3>
-										<p className="text-lg">
+										<p className="text-lg xl:text-xl">
 											{p.description}
 										</p>
 									</div>

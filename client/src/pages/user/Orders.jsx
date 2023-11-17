@@ -20,12 +20,12 @@ const Orders = () => {
 	}, [auth?.token]);
 	return (
 		<Layout title={"Dashboard - Orders"}>
-			<div className="flex mb-8">
+			<div className="flex flex-col xl:flex-row pt-10 md:pt-28 mb-8">
 				<UserMenu />
-				<div className="flex flex-col w-full mt-20 mx-10 p-10 pt-4 h-fit ">
+				<div className="flex flex-col xl:w-full xl:mt-20 lg:mx-10 p-4 md:p-10 pt-4 h-fit ">
 					<h1 className="text-5xl bold text-center ">All Orders</h1>
 					<div className="table">
-						<div className=" mx-20 my-8  border">
+						<div className=" xl:mx-20 lg:my-8  border">
 							{orders?.map((o, i) => {
 								return (
 									<div key={i}>
@@ -38,7 +38,9 @@ const Orders = () => {
 													<th scope="col">Orders</th>
 													<th scope="col">Amount</th>
 													<th scope="col">Payment</th>
-													<th scope="col">Quantity</th>
+													<th scope="col">
+														Quantity
+													</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -77,19 +79,21 @@ const Orders = () => {
 													className="mb-2 flex items-center justify-between pr-20 bg-gray-200 border  shadow-lg shadow-gray-400"
 													key={p._id}
 												>
-													<div className="flex gap-16  bg-gray-200">
+													<div className="flex gap-6 lg:gap-16  bg-gray-200">
 														<img
 															src={`/api/v1/product/product-photo/${p._id}`}
 															alt={p.name}
-															className="w-64 shadow-sm shadow-gray-400 border-none"
+															className="w-32 h-32 lg:h-auto lg:w-64 shadow-sm shadow-gray-400 border-none"
 														/>
-														<div className="flex flex-col justify-around bg-gray-200 py-4 px-6 ">
+														<div className="flex flex-col justify-around bg-gray-200 py-2 px-6 ">
 															<div className="">
-																<h1 className="text-3xl mb-2">
+																<h1 className="text-2xl md:text-3xl mb-2">
 																	{p.name}
 																</h1>
-																<h1 className="text-lg mb-4">
-																	{p.description}
+																<h1 className="text-lg mb lg:mb-4">
+																	{
+																		p.description
+																	}
 																</h1>
 															</div>
 															<div className="mt-3 flex gap-8 items-center justify-between">
@@ -101,13 +105,11 @@ const Orders = () => {
 														</div>
 													</div>
 												</div>
-												)
-											)}
+											))}
 										</div>
 									</div>
-									)
-								}
-							)}
+								);
+							})}
 						</div>
 					</div>
 				</div>

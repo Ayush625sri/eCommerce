@@ -62,14 +62,14 @@ const CreateProduct = () => {
 
 	return (
 		<Layout title={"Dashboard - Create Product"}>
-			<div className="flex pb-16 ">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 lg:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-6 mx-10 p-10 pt-6 h-fit  border-2 shadow-gray-400 shadow-xl ">
+				<div className="flex flex-col xl:w-full lg:mt-6 lg:mx-10 p-4 sm:p-10 pt-6 h-fit  border-2 shadow-gray-400 shadow-xl ">
 					<div className="flex justify-center w-full ">
 						<h1 className="text-5xl  bold">Create Product</h1>
 					</div>
 			
-						<div className=" px-32 flex flex-col gap-4 items-center w-full">
+						<div className=" lg:px-32 flex flex-col gap-4 items-center w-full">
 							<div className="outline-none mt-8  border-2 rounded-md  cursor-pointer w-full  shadow-md shadow-gray-400">
 								<Select
 									className=" w-full cursor-pointer bg-gray-100 focus:ring-4 focus:ring-blue-400"

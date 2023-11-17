@@ -21,23 +21,26 @@ const SearchInput = () => {
 			<form
 				role="search"
 				onSubmit={handleSubmit}
-				className=" mx-2 flex gap-3"
+				className=" mx-4  flex gap-2  justify-between"
 			>
 				<input
-					className="rounded-md p-2 "
+					className="rounded-md p-2 text-black w-full "
 					type="search"
 					name="search"
 					id="search"
+					autoFocus
 					placeholder="Search"
 					value={values?.keyword ? values.keyword : ""}
 					onChange={(e) =>
 						setValues({ ...values, keyword: e.target.value })
 					}
-				/>
+				>
+
+					</input>
 				<button
 					className="shadow-md shadow-gray-600 border-2 border-blue-600 rounded-md text-xl px-2 py-1 bg-blue-600 text-white hover:text-blue-600 hover:bg-white hover:scale-105 active:scale-95"
 					type="submit"
-				>
+					>
 					Search
 				</button>
 			</form>

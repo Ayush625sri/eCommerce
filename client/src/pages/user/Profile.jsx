@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import UserMenu from "../../components/Layout/UserMenu";
+import UserMenu from '../../components/Layout/UserMenu'
 import Layout from "../../components/Layout/Layout";
+import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/auth";
 
 const Profile = () => {
 	const [name, setName] = useState("");
@@ -35,11 +35,11 @@ const Profile = () => {
 			if (data?.error) {
 				toast.error(data?.error);
 			} else {
-				setAuth({...auth,user: data?.updatedUser})
-				let ls = localStorage.getItem('auth')
-				ls = JSON.parse(ls)
-				ls.user = data.updatedUser
-				localStorage.setItem('auth', JSON.stringify(ls))
+				setAuth({ ...auth, user: data?.updatedUser });
+				let ls = localStorage.getItem("auth");
+				ls = JSON.parse(ls);
+				ls.user = data.updatedUser;
+				localStorage.setItem("auth", JSON.stringify(ls));
 				toast.success("Profile Updated Successfully");
 			}
 		} catch (error) {
@@ -49,11 +49,13 @@ const Profile = () => {
 	};
 	return (
 		<Layout title={"Dashboard - Orders"}>
-			<div className="flex ">
+			<div className="flex flex-col lg:flex-row pt-10 md:pt-28 lg:h-screen mb-10">
 				<UserMenu />
-				<div className="flex flex-col w-[60%] my-20 mx-10 pt-4 h-fit  items-center ">
-					<div className="px-28 py-20 shadow-gray-400 shadow-lg ">
-						<h1 className="text-5xl bold text-center">Your Profile</h1>
+				<div className="  flex flex-col lg:w-[60%] lg:my-20 mx-10 lg:pt-4 items-center ">
+					<div className="px-10 py-8 lg:px-28 lg:py-20 shadow-gray-400 shadow-lg ">
+						<h1 className="text-5xl bold text-center">
+							Your Profile
+						</h1>
 						<form
 							action=""
 							onSubmit={handleSubmit}
@@ -61,7 +63,6 @@ const Profile = () => {
 						>
 							<div className="mb-5">
 								<input
-
 									disabled
 									type="email"
 									value={email}

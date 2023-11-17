@@ -7,11 +7,11 @@ const Categories = () => {
     const navigate = useNavigate()
 	return (
 		<Layout title={"All Categories"}>
-			<h1 className="text-5xl text-center mt-12">All Categories</h1>
-			<hr className="my-8" />
-			<div className="flex justify-center items-center h-[50vh] ">
+			<h1 className="pt-20 lg:pt-28 text-3xl md:text-5xl text-center ">All Categories</h1>
+			<hr className="my-4" />
+			<div className="flex justify-center items-center xl:h-[80vh] ">
 
-				<div className="grid grid-cols-4 gap-8">
+				<div className="px-8 grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 gap-4 lg:gap-8 mb-10">
 					{categories.map((c, idx) => (
 						<div className="">
 							<button 

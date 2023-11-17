@@ -116,72 +116,74 @@ const Home = () => {
 
 	return (
 		<Layout title={"All Products - Best Offers"}>
-			<div className="flex p-8 ">
-				<div className="flex flex-col mr-20 gap-8 ">
-					<div className="">
-						{/* {JSON.stringify(checked, null,4)} */}
-						<h1 className="text- text-3xl mb-2">
-							Filter By Category
-						</h1>
-						<hr className="mb-2" />
-						<div className="flex flex-col">
-							{categories?.map((c) => (
-								<Checkbox
-									key={c._id}
-									className="text-lg"
-									onChange={(e) =>
-										handleFilter(e.target.checked, c._id)
-									}
+			<div className="flex flex-col 2xl:flex-row p-8 pt-28">
+				<div className="flex flex-col  2xl:flex-col mr-20 mb-20 gap-8 ">
+					<div className="flex flex-col gap-8 md:flex-row 2xl:flex-col justify-between xl:justify-around ">
+						<div className="">
+							{/* {JSON.stringify(checked, null,4)} */}
+							<h1 className=" text-3xl mb-2">
+								Filter By Category
+							</h1>
+							<hr className="mb-2" />
+							<div className="flex flex-col">
+								{categories?.map((c) => (
+									<Checkbox
+										key={c._id}
+										className="text-lg"
+										onChange={(e) =>
+											handleFilter(
+												e.target.checked,
+												c._id
+											)
+										}
+									>
+										{c.name}
+									</Checkbox>
+								))}
+							</div>
+						</div>
+
+						<div className="">
+							{/* {JSON.stringify(radio, null,4)} */}
+							<h1 className=" text-3xl mb-2">Filter By Prices</h1>
+							<hr className="mb-2" />
+							<div className="flex flex-col">
+								<Radio.Group
+									onChange={(e) => setRadio(e.target.value)}
+									className="flex flex-col"
 								>
-									{c.name}
-								</Checkbox>
-							))}
+									{Prices?.map((p) => (
+										<Radio
+											className="text-lg"
+											key={p._id}
+											value={p.array}
+										>
+											{p.name}
+										</Radio>
+									))}
+								</Radio.Group>
+							</div>
 						</div>
 					</div>
-
-					<div className="">
-						{/* {JSON.stringify(radio, null,4)} */}
-						<h1 className="text- text-3xl mb-2">
-							Filter By Prices
-						</h1>
-						<hr className="mb-2"/>
-						<div className="flex flex-col">
-							<Radio.Group
-								onChange={(e) => setRadio(e.target.value)}
-								className="flex flex-col"
-							>
-								{Prices?.map((p) => (
-									<Radio
-										className="text-lg"
-										key={p._id}
-										value={p.array}
-									>
-										{p.name}
-									</Radio>
-								))}
-							</Radio.Group>
-						</div>
-						<div className="flex flex-col mt-8">
-							<button
-								className="active:scale-95 shadow-lg shadow-gray-400 w-full text-center text-xl px-4 py-2 rounded-lg  border-2 border-red-600 bg-red-600 text-white hover:text-red-600 hover:bg-white "
-								onClick={() => window.location.reload()}
-							>
-								Clear Filters
-							</button>
-						</div>
+					<div className="flex flex-col mt-8  xl:items-center">
+						<button
+							className="active:scale-95 shadow-lg shadow-gray-400 w-full xl:w-[70%] 2xl:w-full text-center text-xl px-4 py-2 rounded-lg  border-2 border-red-600 bg-red-600 text-white hover:text-red-600 hover:bg-white "
+							onClick={() => window.location.reload()}
+						>
+							Clear Filters
+						</button>
 					</div>
 				</div>
-				<div className="flex flex-col items-center w-[75vw] ">
+				<div className="flex flex-col items-center 2xl:w-[75vw] ">
 					<h1 className="text-center text-5xl mb-6">All Products</h1>
 					<div className="flex  flex-col gap-4">
 						<h1 className="text-4xl">Products</h1>
-						<div className="grid grid-cols-4 gap-16">
+						<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-16 ">
 							{products?.map((p) => (
-								<div onClick={() =>
-									navigate(
-										`/product/${p._id}`
-									)
-								}
+								<div
+									onClick={() =>
+										navigate(`/product/${p._id}`)
+									}
 									className="flex flex-col items-center justify-between h-full border-2  shadow-lg shadow-gray-400 hover:scale-105 hover:cursor-pointer"
 									key={p._id}
 								>
@@ -217,13 +219,19 @@ const Home = () => {
 												More Details
 											</button>
 											<button
-												onClick={() =>{
-
-													setCart([...cart, p])
-													localStorage.setItem('cart', JSON.stringify([...cart,p]))
-													toast.success("Item Added To Cart")
-												}
-												}
+												onClick={() => {
+													setCart([...cart, p]);
+													localStorage.setItem(
+														"cart",
+														JSON.stringify([
+															...cart,
+															p,
+														])
+													);
+													toast.success(
+														"Item Added To Cart"
+													);
+												}}
 												className="shadow-md shadow-gray-400 border-2 border-gray-600 rounded-md text-xl px-2 py-1 bg-gray-600 text-white hover:text-gray-600 hover:bg-white active:scale-95"
 											>
 												Add to Cart

@@ -13,18 +13,18 @@ const Search = () => {
   return (
     <Layout title={'Search Results'}> 
     <div className='flex'>
-        <div className='flex justify-center flex-col text-center w-full mt-8'>
-            <h1 className='text-5xl text-center'>Search Results</h1>
-            <h6 className='text-xl mt-4'>{values?.results.length < 1 ? "No Products Found" : `Found ${values?.results.length} Items`}</h6>
+        <div className='flex w-full justify-center flex-col text-center xl:w-full pt-20 lg:pt-28'>
+            <h1 className=' text-4xl xl:text-5xl text-center'>Search Results</h1>
+            <h6 className='text-2xl mt-4'>{values?.results.length < 1 ? "No Products Found" : `Found ${values?.results.length} Items`}</h6>
 			<hr className="my-4" />
-            <div className="grid grid-cols-5 gap-8 mx-8 my-6 mb-10 ">
+            <div className="  flex flex-wrap gap-8 mx-4 my-8 mb-10 w-full  ">
 							{values?.results?.map((p) => (
 								<div onClick={() =>
 									navigate(
 										`/product/${p._id}`
 									)
 								}
-									className="flex flex-col items-center justify-between h-full border-2 shadow-lg shadow-gray-400 hover:scale-105 hover:cursor-pointer"
+									className="flex flex-col min-w-[15rem] lg:w-96   items-center justify-between border-2 shadow-lg shadow-gray-400 hover:scale-105 hover:cursor-pointer"
 									key={p._id}
 								>
 									<img

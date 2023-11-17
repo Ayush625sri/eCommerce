@@ -98,14 +98,14 @@ const UpdateProduct = () => {
 
 	return (
 		<Layout title={"Dashboard - Create Product"}>
-			<div className="flex pb-16 ">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 xl:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-6 mx-10 p-10 pt-6 h-fit  border-2 shadow-gray-400 shadow-xl ">
+				<div className="flex flex-col xl:w-full mt-6 mx-10 p-10 pt-6 h-fit  border-2 shadow-gray-400 shadow-xl ">
 					<div className="flex items-center ">
-						<h1 className="text-5xl bold">Update Product</h1>
+						<h1 className="text-4xl lg:text-5xl bold">Update Product</h1>
 					</div>
 
-					<div className=" px-32 flex flex-col gap-4 items-center w-full">
+					<div className=" xl:px-32 flex flex-col gap-4 items-center xl:w-full">
 						<div className="outline-none mt-8  border-2 rounded-md  cursor-pointer w-full  shadow-md shadow-gray-400">
 							<Select
 								className=" w-full cursor-pointer bg-gray-100 focus:ring-4 focus:ring-blue-400"
@@ -213,7 +213,7 @@ const UpdateProduct = () => {
 									/>
 								</div>
 							) : (
-								<div className="text-center w-72 shadow-xl shadow-gray-400  border-2">
+								<div className="text-center md:w-72 shadow-xl shadow-gray-400  border-2">
 									<img
 										src={`/api/v1/product/product-photo/${id}`}
 										alt={"product_photo"}
@@ -238,7 +238,7 @@ const UpdateProduct = () => {
 							</label>
 						</div>
 
-						<div className="mb-1 w-full flex gap-4">
+						<div className="mb-1 w-full flex flex-col md:flex-row gap-4">
 							<button
 								onClick={handleDelete}
 								className="active:scale-95 shadow-lg shadow-gray-400 w-full text-center text-xl px-4 py-2 rounded-lg cursor-pointer border-2 border-red-600 bg-red-600 text-white hover:text-red-600 hover:bg-white "

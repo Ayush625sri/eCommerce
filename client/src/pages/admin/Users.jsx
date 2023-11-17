@@ -3,6 +3,8 @@ import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
+import Th from "../../components/utils/Th";
+import Td from "../../components/utils/Td";
 
 const Users = () => {
 	const [auth, setAuth] = useAuth();
@@ -22,20 +24,21 @@ const Users = () => {
 	}, [auth?.token]);
 	return (
 		<Layout title={"Dashboard - Users"}>
-			<div className="flex mb-8">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 lg:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-6 mx-10 p-10 pt-4 h-fit  border-2 shadow-gray-400 shadow-xl ">
+				<div className="flex flex-col xl:w-full mt-6 xl:mx-10 lg:p-10 pt-4 h-fit  border-2 shadow-gray-400 shadow-xl ">
 					<div className="flex justify-center">
-						<h1 className="text-5xl bold">Users</h1>
+						<h1 className="text-4xl lg:text-5xl bold">Users</h1>
 					</div>
-					<table className="mt-8 ">
+					<table className="mt-3 md:mt-8 ">
 						<thead className="border-b-2 ">
 							<tr>
-							<th scope="col" className="text-3xl pb-4 font-medium">Name</th>
-							<th scope="col" className="text-3xl pb-4 font-medium">Role</th>
-							<th scope="col" className="text-3xl pb-4 font-medium">Email</th>
-							<th scope="col" className="text-3xl pb-4 font-medium">Phone</th>
-							<th scope="col" className="text-3xl pb-4 font-medium">Address</th>
+								<Th value="Name"/>
+								<Th value="Role"/>
+								<Th value="Email"/>
+								<Th value="Phone"/>
+								<Th value="Address"/>
+							
 							</tr>
 						</thead>
 						{/* <hr className="my-4" />/ */}
@@ -45,12 +48,12 @@ const Users = () => {
 							className="border-b-2 "
 							>
 								<tr>
+									<Td value={u.name} />
+									<Td value={u?.role == '0' ? 'User' : 'Admin'} />
+									<Td value={u.email} />
+									<Td value={u.phone} />
+									<Td value={u.address} />
 
-								<td className="text-2xl py-4 font-normal text-center">{u.name}</td>
-								<td className="text-2xl py-4 font-normal text-center">{u?.role == '0' ? 'User' : 'Admin'}</td>
-								<td className="text-2xl py-4 font-normal text-center">{u.email}</td>
-								<td className="text-2xl py-4 font-normal text-center">{u.phone}</td>
-								<td className="text-2xl py-4 font-normal text-center">{u.address}</td>
 								</tr>
 							</tbody>
 						))}

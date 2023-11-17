@@ -38,7 +38,7 @@ const Login = () => {
 	};
 	return (
 		<Layout title={"Login"}>
-			<div className="flex flex-col items-center justify-center h-[70vh]">
+			<div className="flex flex-col items-center justify-center md:h-[70vh] pt-20">
 				<h1 className="text-5xl">Login Page</h1>
 				<form
 					action=""

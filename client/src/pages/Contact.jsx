@@ -6,7 +6,7 @@ import { IoIosMail } from "react-icons/io";
 const Contact = () => {
 	return (
 		<Layout title={'Contact - eCommerce App'}>
-			<div className=" flex flex-col md:p-10 md:text-justify lg:flex-row  w-full h-[80vh] items-center justify-center gap-12 ">
+			<div className="px-4 flex flex-col md:p-10 md:text-justify lg:flex-row  w-full h-[80vh] items-center justify-center gap-12 ">
 				<img
 					className="w-[50vw] rounded-xl hidden md:block md:w-[60vw] lg:block border-gray-900 border-4"
 					src="/images/contactus.jpeg"

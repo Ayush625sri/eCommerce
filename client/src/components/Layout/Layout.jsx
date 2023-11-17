@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 import  { Toaster } from 'react-hot-toast';
 const Layout = ({ children, title, description, keywords, author }) => {
 	return (
-		<div>
+		<div className="w-screen">
 			<Helmet>
 				<meta charSet="utf-8" />
 				<meta

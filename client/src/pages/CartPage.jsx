@@ -84,49 +84,49 @@ const CartPage = () => {
 
 	return (
 		<Layout title={"Shopping Cart"}>
-			<div className=" m-4 mb-8">
-				<div className="mb-8">
-					<h1 className="text-center text-3xl mb-3">
-						{`Hello ${auth?.token && auth?.user?.name}`}
-					</h1>
-					<h1 className="text-center text-2xl">
-						{cart?.length > 1
-							? `You Have ${cart.length} Items In Your Cart ${
+			<div className="px-4 pt-28 mb-8 xl:pl-20">
+				<div className="mb-8 flex justify-center">
+					{auth?.user && <h1 className="text-center text-3xl mb-3 ">
+						{`Hello,${" "} ${auth?.token && auth?.user?.name}`}
+					</h1>}
+					<h1 className="text-center text-3xl ">
+						{(cart?.length > 0)
+							? `${cart.length} items in your cart  ${
 									auth?.token
 										? ""
-										: "Please Login To Checkout"
+										: "please login to checkout"
 							  }`
 							: `Your Cart Is Empty`}
 					</h1>
 				</div>
-				<div className="flex justify-between mx-10">
-					<div className="flex flex-col gap-6 w-[55%] ">
+				<div className="flex flex-col items-center 2xl:flex-row">
+					<div className="flex flex-col gap-6 2xl:w-[55%] xl:w-[70%] ">
 						{cart?.map((p) => (
 							<div
-								className="flex items-center justify-between pr-20 bg-gray-200  border-gray-800 shadow-lg shadow-gray-400"
+								className="flex items-center justify-between xl:pr-20 bg-gray-200  border-gray-800 shadow-lg shadow-gray-400"
 								key={p._id}
 							>
-								<div className="flex gap-16  bg-gray-200">
+								<div className="flex gap-2 xl:gap-16  bg-gray-200">
 									<img
 										src={`/api/v1/product/product-photo/${p._id}`}
 										alt={p.name}
-										className="w-64 shadow-sm shadow-gray-400 border-none"
+										className=" h-24 md:h-auto md:w-64 shadow-sm shadow-gray-400 border-none"
 									/>
-									<div className="flex flex-col justify-around bg-gray-200 py-4 px-6 ">
+									<div className="flex flex-col justify-around bg-gray-200 md:py-4 md:px-6 ">
 										<div className="">
-											<h1 className="text-3xl mb-2">
+											<h1 className="text-xl xl:text-4xl md:text-3xl md:mb-2">
 												{p.name}
 											</h1>
-											<h1 className="text-lg mb-4">
+											<h1 className="md:text-lg xl:text-xl md:mb-4">
 												{p.description}
 											</h1>
 										</div>
-										<div className="mt-3 flex gap-8 items-center justify-between">
-											<h1 className="text-2xl font-bold">
+										<div className="lg:mt-3 flex gap-8 items-center justify-between">
+											<h1 className=" md:text-2xl font-bold">
 												Price : $ {p.price}
 											</h1>
 											<button
-												className=" shadow-md shadow-gray-400 border-2 border-red-600 rounded-md text-xl px-3 py-1 bg-red-600 text-white hover:text-red-600 hover:bg-white active:scale-95 mr-8"
+												className="text-xs p-1 shadow-md shadow-gray-400 border-2 border-red-600 rounded-md md:text-xl md:px-3 md:py-1 bg-red-600 text-white hover:text-red-600 hover:bg-white active:scale-95 mr-8"
 												onClick={() =>
 													removeCartItem(p._id)
 												}
@@ -141,7 +141,7 @@ const CartPage = () => {
 						{cart.length > 0 && (
 							<div className="w-full flex justify-center">
 								<button
-									className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl   px-6 py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
+									className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md px-4 py-2 md:text-xl   lg:px-6 lg:py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
 									onClick={() => navigate("/")}
 								>
 									Add More Items
@@ -150,15 +150,15 @@ const CartPage = () => {
 						)}
 					</div>
 					{cart?.length > 0 && (
-						<div className="w-[45%] px-10 text-center flex flex-col items-center">
-							<h1 className="text-5xl mb-4">Cart Summary</h1>
-							<h1 className="text-xl mb-4">
+						<div className="py-4 xl:py-10 flex flex-col items-center mt-8 px-10 text-center 2xl:w-[45%] bg-gray-100 2xl:bg-white w-full">
+							<h1 className="text-3xl xl:text-5xl mb-4">Cart Summary</h1>
+							{/* <h1 className="text-xl mb-4">
 								Total | Checkout | Payment
-							</h1>
-							<hr className="w-full my-4" />
+							</h1> */}
+							<hr className="w-full mb-4" />
 							<div
 								div
-								className="flex gap-28 font-bold text-2xl  "
+								className="flex gap-7 md:gap-16 xl:gap-28 font-bold text-xl md:text-2xl  "
 							>
 								<h1 className="">Items</h1>
 								<h1 className="">Quantity</h1>
@@ -170,16 +170,16 @@ const CartPage = () => {
 								cart?.map((p) => (
 									<div
 										key={p._id}
-										className="flex gap-36"
+										className="flex gap-10 md:gap-20 xl:gap-36"
 									>
-										<h1 className="text-xl mb-4">
+										<h1 className="text-lg md:text-xl mb-4 w-[30%]">
 											{p.name}
 										</h1>
-										<h1 className="text-xl mb-4">1</h1>
-										<h1 className="text-xl mb-4">
-											{p.price} x 1
+										<h1 className="text-lg md:text-xl mb-4">1</h1>
+										<h1 className="text-lg md:text-xl mb-4">
+											{p.price} X 1
 										</h1>
-										<h1 className="text-xl mb-4">
+										<h1 className="text-lg md:text-xl mb-4">
 											{p.price}
 										</h1>
 									</div>
@@ -187,7 +187,7 @@ const CartPage = () => {
 
 							<hr />
 
-							<h1 className="text-3xl mt-4">
+							<h1 className="text-2xl md:text-3xl mt-4">
 								Total : {totalPrice()}
 							</h1>
 							{auth?.user?.address ? (
@@ -200,7 +200,7 @@ const CartPage = () => {
 										onClick={() =>
 											navigate(`/dashboard/user/profile`)
 										}
-										className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl w-[40%]  px-6 py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
+										className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl w-[40%]  px-4 py-2 lg:px-6 lg:py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
 									>
 										Update Address
 									</button>
@@ -215,7 +215,7 @@ const CartPage = () => {
 														`/dashboard/user/profile`
 													)
 												}
-												className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl w-[40%]  px-6 py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
+												className="shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl w-[40%]  px-4 py-2 lg:px-6 lg:py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
 											>
 												Update Address
 											</button>
@@ -227,7 +227,7 @@ const CartPage = () => {
 													state: `/cart`,
 												})
 											}
-											className=" shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl   px-6 py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
+											className=" shadow-md shadow-gray-400 mt-4 border-2 border-blue-600 rounded-md text-xl   px-4 py-2 lg:px-6 lg:py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
 										>
 											Please Login To Checkout
 										</button>
@@ -265,7 +265,7 @@ const CartPage = () => {
 											!instance ||
 											!auth?.user?.address
 										}
-										className="disabled:bg-green-200 disabled:text-green-400 shadow-md shadow-gray-400 mt-4 border-2 border-green-600 rounded-md text-xl   px-6 py-4 bg-green-600 text-white hover:text-green-600 hover:bg-white active:scale-95"
+										className="disabled:bg-green-200 disabled:text-green-400 shadow-md shadow-gray-400 mt-4 border-2 border-green-600 rounded-md text-xl   px-4 py-2 lg:px-6 lg:py-4 bg-green-600 text-white hover:text-green-600 hover:bg-white active:scale-95"
 									>
 										{loading ? "Processing" : "Checkout"}
 									</button>
@@ -280,7 +280,7 @@ const CartPage = () => {
 							""
 						) : (
 							<button
-								className="shadow-md shadow-gray-400 border-2 border-blue-600 rounded-md text-xl px-6 py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
+								className="shadow-md shadow-gray-400 border-2 border-blue-600 rounded-md text-xl px-4 py-2 lg:px-6 lg:py-4 bg-blue-600 text-white hover:text-blue-600 hover:bg-white active:scale-95"
 								onClick={() => navigate("/")}
 							>
 								Add Items To Cart

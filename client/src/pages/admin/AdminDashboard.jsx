@@ -6,9 +6,9 @@ const AdminDashboard = () => {
 	const [auth, setAuth] = useAuth();
 	return (
 		<Layout title={"Admin Dashboard"}>
-			<div className="flex mb-8">
+			<div className="flex flex-col xl:flex-row mb-8 pt-12 lg:pt-28">
 				<AdminMenu />
-				<div className="flex flex-col w-full mt-20 mx-10 p-10 pt-4 h-fit border-2 shadow-gray-800 shadow-lg">
+				<div className="flex flex-col xl:w-full xl:mt-20 mx-10 p-10 pt-4 h-fit border-2 shadow-gray-800 shadow-lg">
 					<h1 className="text-2xl bold">
 						Admin Name : {auth?.user?.name}
 					</h1>

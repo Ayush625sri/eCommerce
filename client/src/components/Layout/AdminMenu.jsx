@@ -6,8 +6,8 @@ const AdminMenu = () => {
 	const [auth, setAuth] = useAuth()
 
 	return (
-		<div className="flex flex-col w-3/12 text-center m-10 mt-8 ">
-			<h4 className="text-4xl bold">Admin Dashboard</h4>
+		<div className="flex flex-col xl:w-3/12 m-10 mt-8 ">
+			<h4 className="text-4xl text-center bold">Admin Dashboard</h4>
 			
 			<div className="flex flex-col mt-3  gap-2">
 				<NavLink

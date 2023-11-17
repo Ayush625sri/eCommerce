@@ -62,7 +62,7 @@ const CategoryProduct = () => {
 
 	return (
 		<Layout>
-			<div className="m-4 text-center w-full">
+			<div className=" pt-28 text-center w-full">
 				<h1 className="text-4xl text-center">
 					Category - {category?.name}
 				</h1>
@@ -70,9 +70,9 @@ const CategoryProduct = () => {
 					Results Found : {products?.length}{" "}
 				</h1>
 			</div>
-            <div className="flex flex-col items-center w- ">
-					<div className="flex  flex-col gap-4">
-						<div className="grid grid-cols-4 gap-5">
+            <div className="mt-10 flex flex-col items-center xl:h-[80vh]">
+					<div className="flex  flex-col gap-4 mb-8">
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 							{products?.map((p) => (
 								<div onClick={() =>
 									navigate(
