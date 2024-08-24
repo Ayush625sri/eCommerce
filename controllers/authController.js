@@ -44,7 +44,7 @@ export const registerController = async (req, res) => {
 	}
 };
 
-//POST || REGISTER
+//POST || Login
 export const loginController = async (req, res) => {
 	try {
 		const { email, password } = req.body;
@@ -56,7 +56,7 @@ export const loginController = async (req, res) => {
 			});
 		}
 		const user = await userModel.findOne({ email });
-		if (!email) {
+		if (!user) {
 			return res.status(404).send({
 				success: false,
 				message: "Email is not registered",
