@@ -1,8 +1,7 @@
 # Vault24 App
 This is an ecommerce application for watches and clock
 
-### Deployed at : https://quaint-ray-swimsuit.cyclic.app/
-
+### Deployed at : https://vault24.onrender.com
 ### TechStack  : MERN (MongoDB - Database, Express - Server, React - Frontend, Node - Backend)
 
 ## Other Libraries Used: 
