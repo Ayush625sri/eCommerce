@@ -15,7 +15,7 @@ const Search = () => {
     <div className='flex'>
         <div className='flex w-full justify-center flex-col text-center xl:w-full pt-20 lg:pt-28'>
             <h1 className=' text-4xl xl:text-5xl text-center'>Search Results</h1>
-            <h6 className='text-2xl mt-4'>{values?.results.length < 1 ? "No Products Found" : `Found ${values?.results.length} Items`}</h6>
+            <h6 className='text-2xl mt-4'>{((values?.results.length < 1 ) || (values?.results === ' '))? "No Products Found" : `Found ${values?.results.length} Items`}</h6>
 			<hr className="my-4" />
             <div className="  flex flex-wrap gap-8 mx-4 my-8 mb-10 w-full  ">
 							{values?.results?.map((p) => (

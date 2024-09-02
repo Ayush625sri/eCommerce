@@ -2,6 +2,10 @@ import userModel from "../models/userModel.js";
 import orderModel from "../models/orderModel.js";
 import { comparePass, hashPassword } from "../utils/authUtil.js";
 import JWT from "jsonwebtoken";
+import { transporter } from "./sendEmail.js";
+import { config } from "dotenv";
+config()
+
 
 //POST || REGISTER
 export const registerController = async (req, res) => {
@@ -29,6 +33,42 @@ export const registerController = async (req, res) => {
 			question,
 			password: hashedPassword,
 		}).save();
+
+		
+		const sendEmail = async()=>{
+			try {
+				const mailOptions = {
+					from: {
+						name: "Vault24",
+						address: process.env.SMTP_MAIL,
+					},
+					to: email,
+					subject:"Vault24",
+					html:"<div> Thankyou For registering on <strong>Vault24</strong></div>",
+				}
+				
+				console.log(mailOptions)
+				console.log("Sending Email...")
+				
+				transporter.sendMail(mailOptions, (err, info)=>{
+					if(err){
+						console.log("Sent Email failed")
+						console.log(err.message)
+					}
+					else{
+						console.log('Email Sent Successfully')
+					}
+				})
+				
+			} catch (error) {;
+				console.log("Error in sendEmail")
+				console.log(error)
+				
+			}
+		}
+		sendEmail()
+
+
 		res.status(201).send({
 			success: true,
 			message: "User Registered Successfully",
@@ -74,6 +114,41 @@ export const loginController = async (req, res) => {
 			process.env.JWT_SECRET,
 			{ expiresIn: "7d" }
 		);
+		
+		
+        
+        const sendEmail = async()=>{
+			try {
+				const mailOptions = {
+					from: {
+						name: "Vault24",
+						address: process.env.SMTP_MAIL,
+					},
+					to: email,
+					subject:"Vault24",
+					html:"<div> Thankyou For Loggin in on <strong>Vault24</strong></div>",
+				}
+				
+				console.log(mailOptions)
+				console.log("Sending Email...")
+				
+				transporter.sendMail(mailOptions, (err, info)=>{
+					if(err){
+						console.log("Sent Email failed")
+						console.log(err.message)
+					}
+					else{
+						console.log('Email Sent Successfully')
+					}
+				})
+				
+			} catch (error) {;
+				console.log("Error in sendEmail")
+				console.log(error)
+				
+			}
+		}
+		sendEmail()
 
 		res.status(200).send({
 			success: true,
@@ -173,6 +248,37 @@ export const updateProfileController = async (req, res) => {
 			{ new: true }
 		);
 
+		const sendEmail = async()=>{
+			try {
+				const mailOptions = {
+					from:  {
+						name: "Telecom",
+						address: process.env.SMTP_MAIL,
+					},
+					to: email,
+					subject:"Profile Updated",
+					html:"<div> Hi there, Your Vault24 profile has been updated.<strong>Vault24</strong></div>",
+				}
+				console.log(mailOptions)
+				console.log("Sending Email...")
+				
+				transporter.sendMail(mailOptions, (err, info)=>{
+					if(err){
+						console.log("Sent Email failed")
+						console.log(err.message)
+					}
+					else{
+						console.log('Email Sent Successfully')
+					}
+				})
+				
+			} catch (error) {;
+				console.log("Error in sendEmail")
+				console.log(error)
+				
+			}
+		}
+		sendEmail()
 		res.status(200).send({
 			success: true,
 			message: "Profile Updated",
@@ -226,7 +332,44 @@ export const orderStatusController = async (req, res) => {
 	try {
 		const {orderId} = req.params
 		const {status} = req.body
+		const order = await orderModel.findById(orderId)
 		const orders = await orderModel.findByIdAndUpdate(orderId, {status}, {new:true})
+		
+		const buyer = await userModel.findById(order.buyer)
+		console.log(buyer)
+		
+		const sendEmail = async()=>{
+			try {
+				const mailOptions = {
+					from: {
+						name: "Vault24",
+						address: process.env.SMTP_MAIL,
+					},
+					to: buyer.email,
+					subject:`Order ${status}`,
+					html:"<div> Thankyou For Choosing Us Making Your Purchase... on <strong>Vault24</strong></div>",
+				}
+				
+				console.log(mailOptions)
+				console.log("Sending Email...")
+				
+				transporter.sendMail(mailOptions, (err, info)=>{
+					if(err){
+						console.log("Sent Email failed")
+						console.log(err.message)
+					}
+					else{
+						console.log('Email Sent Successfully')
+					}
+				})
+				
+			} catch (error) {;
+				console.log("Error in sendEmail")
+				console.log(error)
+				
+			}
+		}
+		sendEmail()
 		res.json(orders)
 	} catch (error) {
 		console.log(error);

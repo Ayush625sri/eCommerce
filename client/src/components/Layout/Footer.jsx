@@ -10,7 +10,7 @@ const Footer = () => {
         <Link to="/contact" className='mx-5 hover:text-teal-300'> Contact </Link>  {(screen.width > 590) && <span>|</span>}
         <Link to="/policy" className='mx-5 hover:text-teal-300'> Privacy Policy </Link>
       </div>
-      <h4 className="text-xl">All Right reserved &copy; eCommerce </h4>
+      <h4 className="text-xl">All Right reserved &copy; Vault24 </h4>
     </div>
   )
 }

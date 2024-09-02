@@ -9,6 +9,7 @@ import useCategory from "../../hooks/useCategory.jsx";
 import { Badge } from "antd";
 import { useCart } from "../../context/cart.jsx";
 import { RiArrowDropDownFill } from "react-icons/ri";
+import { GiClockwork } from "react-icons/gi";
 const Header = () => {
 	const [auth, setAuth] = useAuth();
 	const [cart] = useCart();
@@ -61,13 +62,13 @@ const Header = () => {
 		<nav className=" fixed z-10 bg-gray-900 text-white  w-full lg:flex lg:h-20 lg:items-center xl:px-10 lg:justify-between">
 			<div className="flex justify-between items-center px-4 lg:px-1 py-3 ">
 				<div className=" flex gap-1 pl-5 ">
-					<HiMiniShoppingBag className=" text-3xl " />
-
+					<GiClockwork className=" text-3xl " />
+					&nbsp;&nbsp;
 					<NavLink
-						className="font-semibold text-2xl tracking-tighter"
+						className="font-semibold text-2xl tracking-tighter "
 						to="/"
 					>
-						eCommerce App
+						VAULT24
 					</NavLink>
 				</div>
 
@@ -103,8 +104,15 @@ const Header = () => {
 					>
 						Home
 					</NavLink>
+					<NavLink
+						to="/categories"
+						className="lg:text-2xl hover:border-b-2 pb-1 hover:animate-"
+						onClick={() => handleCloseNav("/")}
+					>
+						Categories
+					</NavLink>
 
-					<NavLink className="lg:relative lg:w-40 hover:border-b-2 pb-1">
+					{/* <NavLink className="lg:relative lg:w-40 hover:border-b-2 pb-1">
 						Categories{" "}
 						<RiArrowDropDownFill
 							id="arrow"
@@ -137,7 +145,8 @@ const Header = () => {
 								</li>
 							))}
 						</ul>
-					</NavLink>
+					</NavLink> */}
+
 					{!auth.user ? (
 						<NavLink
 							to="/login"

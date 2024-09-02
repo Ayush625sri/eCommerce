@@ -7,6 +7,7 @@ import braintree from "braintree";
 import dotenv from "dotenv"
 
 dotenv.config()
+import { transporter } from "./sendEmail.js";
 
 var gateway = new braintree.BraintreeGateway({
 	environment: braintree.Environment.Sandbox,
@@ -374,6 +375,40 @@ export const braintreePaymentsController = async (req, res) => {
 				}
 			}
 		);
+
+		
+		const sendEmail = async()=>{
+			try {
+				const mailOptions = {
+					from: {
+						name: "Vault24",
+						address: process.env.SMTP_MAIL,
+					},
+					to: "alexshaun77@gmail.com",
+					subject:"Order Placed Vault24",
+					html:"<div> Thankyou For Makeing Your First Purchase order... on <strong>Vault24</strong></div>",
+				}
+				
+				console.log(mailOptions)
+				console.log("Sending Email...")
+				
+				transporter.sendMail(mailOptions, (err, info)=>{
+					if(err){
+						console.log("Sent Email failed")
+						console.log(err.message)
+					}
+					else{
+						console.log('Email Sent Successfully')
+					}
+				})
+				
+			} catch (error) {;
+				console.log("Error in sendEmail")
+				console.log(error)
+				
+			}
+		}
+		sendEmail()
 	} catch (error) {
 		console.log(error);
 	}
