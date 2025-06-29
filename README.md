@@ -2,9 +2,7 @@
 
 An eCommerce platform built with the MERN stack for selling luxury and fashion watches. This project features a responsive interface, an admin dashboard, email notifications, and integrated payment processing for a streamlined shopping experience.
 
-## Deployment Link
 
-[Add your deployment link here]
 
 ## Table of Contents
 - [Features](#features)
@@ -110,6 +108,4 @@ To deploy, build the client and configure the server to serve static assets. The
 
 Contributions are welcome! Follow project standards and conventions.
 
-## License
 
-This project is licensed under the ISC License.
